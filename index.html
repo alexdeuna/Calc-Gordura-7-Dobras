@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de Percentual de Gordura Corporal</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <script>
+        function calcularPercentualGordura() {
+            // Obtém os valores do formulário
+            const peitoral = parseFloat(document.getElementById('peitoral').value);
+            const abdomen = parseFloat(document.getElementById('abdomen').value);
+            const coxa = parseFloat(document.getElementById('coxa').value);
+            const axilarMedia = parseFloat(document.getElementById('axilarMedia').value);
+            const subescapular = parseFloat(document.getElementById('subescapular').value);
+            const suprailiaca = parseFloat(document.getElementById('suprailiaca').value);
+            const triceps = parseFloat(document.getElementById('triceps').value);
+            const idade = parseInt(document.getElementById('idade').value);
+
+            // Calcula a soma das dobras
+            const somaDobras = peitoral + abdomen + coxa + axilarMedia + subescapular + suprailiaca + triceps;
+
+            // Calcula a densidade corporal usando a fórmula de Jackson & Pollock para homens
+            const densidadeCorporal = 1.112 - 0.00043499 * somaDobras + 0.00000055 * Math.pow(somaDobras, 2) - 0.00028826 * idade;
+
+            // Calcula o percentual de gordura corporal
+            const percentualGordura = ((4.95 / densidadeCorporal) - 4.50) * 100;
+
+            // Exibe o resultado
+            document.getElementById('resultado').textContent = `Percentual de Gordura Corporal: ${percentualGordura.toFixed(2)}%`;
+        }
+    </script>
+    <style>
+        body {
+            background-color: #f0f0f0;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            background-color: #ffffff;
+            padding: 20px;
+            margin-top: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-container img {
+            width: 100%;
+            height: auto;
+            display: block;
+            margin: 0 auto;
+        }
+
+        .form-container .form-group {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .form-container .form-group img {
+            width: 110px;
+            margin-left: auto;
+        }
+
+        .form-container .form-group .col-md-6 {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .form-container .form-group label,
+        .form-container .form-group input {
+            width: 100%;
+        }
+
+        .form-container hr {
+            margin: 20px 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container col-md-6">
+        <div class="form-container">
+            <h3 class="text-center">Calculadora de Percentual de Gordura Corporal</h3>
+            <hr>
+            <form id="fatCalcForm">
+                <div class="form-group row">
+                    <div class="col-md-6">
+                        <label for="peitoral">Peitoral (mm):</label>
+                        <input type="number" id="peitoral" name="peitoral" class="form-control" required>
+                    </div>
+                    <div class="col-md-6">
+                        <img src="https://www.free-online-calculator-use.com/image-files/m-skin-fold-test-chest.jpg"
+                            alt="Local de medição peitoral">
+                    </div>
+                </div>
+                <hr>
+                <div class="form-group row">
+                    <div class="col-md-6">
+                        <label for="abdomen">Abdômen (mm):</label>
+                        <input type="number" id="abdomen" name="abdomen" class="form-control" required>
+                    </div>
+                    <div class="col-md-6">
+                        <img src="https://www.free-online-calculator-use.com/image-files/m-skin-fold-test-abdomen.jpg"
+                            alt="Local de medição abdômen">
+                    </div>
+                </div>
+                <hr>
+                <div class="form-group row">
+                    <div class="col-md-6">
+                        <label for="coxa">Coxa (mm):</label>
+                        <input type="number" id="coxa" name="coxa" class="form-control" required>
+                    </div>
+                    <div class="col-md-6">
+                        <img src="https://www.free-online-calculator-use.com/image-files/m-skin-fold-test-thigh.jpg"
+                            alt="Local de medição coxa">
+                    </div>
+                </div>
+                <hr>
+                <div class="form-group row">
+                    <div class="col-md-6">
+                        <label for="axilarMedia">Axilar Média (mm):</label>
+                        <input type="number" id="axilarMedia" name="axilarMedia" class="form-control" required>
+                    </div>
+                    <div class="col-md-6">
+                        <img src="https://www.free-online-calculator-use.com/image-files/m-skin-fold-test-midaxillary.jpg"
+                            alt="Local de medição axilar média">
+                    </div>
+                </div>
+                <hr>
+                <div class="form-group row">
+                    <div class="col-md-6">
+                        <label for="subescapular">Subescapular (mm):</label>
+                        <input type="number" id="subescapular" name="subescapular" class="form-control" required>
+                    </div>
+                    <div class="col-md-6">
+                        <img src="https://www.free-online-calculator-use.com/image-files/m-skin-fold-test-subscapula.jpg"
+                            alt="Local de medição subescapular">
+                    </div>
+                </div>
+                <hr>
+                <div class="form-group row">
+                    <div class="col-md-6">
+                        <label for="suprailiaca">Suprailíaca (mm):</label>
+                        <input type="number" id="suprailiaca" name="suprailiaca" class="form-control" required>
+                    </div>
+                    <div class="col-md-6">
+                        <img src="https://www.free-online-calculator-use.com/image-files/m-skin-fold-test-suprailiac.jpg"
+                            alt="Local de medição suprailíaca">
+                    </div>
+                </div>
+                <hr>
+                <div class="form-group row">
+                    <div class="col-md-6">
+                        <label for="triceps">Tríceps (mm):</label>
+                        <input type="number" id="triceps" name="triceps" class="form-control" required>
+                    </div>
+                    <div class="col-md-6">
+                        <img src="https://www.free-online-calculator-use.com/image-files/m-skin-fold-test-tricep.jpg"
+                            alt="Local de medição tríceps">
+                    </div>
+                </div>
+                <hr>
+                <div class="form-group row">
+                    <div class="col-md-6 offset-md-3">
+                        <label for="idade">Idade:</label>
+                        <input type="number" id="idade" name="idade" class="form-control" required>
+                    </div>
+                </div>
+                <div class="text-center">
+                    <button type="button" class="btn btn-primary"
+                        onclick="calcularPercentualGordura()">Calcular</button>
+                </div>
+            </form>
+            <h6 id="resultado" class="text-center mt-1"></h6>
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+
+</html>
